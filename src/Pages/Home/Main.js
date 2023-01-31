@@ -1,14 +1,17 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import Home from './Home'
+ 
 
-const SearceManu = () => {
+const Main = () => {
   return (
-    <View>
-      <Text>SearceManu</Text>
-    </View>
+    <>
+      <Home/>
+    
+    </>
   )
 }
 
-export default SearceManu
+export default Main
 
 const styles = StyleSheet.create({})

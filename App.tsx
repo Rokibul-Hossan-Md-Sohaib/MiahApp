@@ -28,7 +28,7 @@ import {
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Home from './src/Pages/Home';
+import Home from './src/Pages/Home/Home';
 
 import Myapp from './src/Myapp/Myapp';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';

@@ -4,7 +4,7 @@ import SplashScreen from 'react-native-splash-screen'
 import { NativeBaseProvider , Box} from 'native-base';
 
 
-const Home = ({navigation}) => {
+const Pre = ({navigation}) => {
   const [isLoading, setLoading] = useState(true);
   const [imagePlace, setImage] = useState([]);
 
@@ -97,7 +97,7 @@ renderItem={({item}) =>{
 
 
 
-export default Home
+export default Pre
 const styles = StyleSheet.create({
   container: {
   
