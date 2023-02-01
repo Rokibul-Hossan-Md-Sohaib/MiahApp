@@ -76,6 +76,7 @@ const SearceManu = ({navigation}) => {
       placeholder="Search"
       onChangeText={onChangeSearch}
       value={searchQuery}
+      style={{marginBottom: 10 , backgroundColor: COLORS.white, color: COLORS.white}}
     />
       {/* <Button 
 title ="HomeScreen"
@@ -95,7 +96,7 @@ onPress ={() => navigation.navigate("New") }
            
               <Pressable
                w={Dimensions.get('window').width/2}
-         
+         onPress={() => navigation.navigate('Categories', {category: item.category , name: item.root_category})}
                bg={COLORS.white}
                rounded ="md"
         

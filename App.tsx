@@ -34,6 +34,8 @@ import Myapp from './src/Myapp/Myapp';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BottomNavigator from './src/navigator/BottomNavigator';
+import Categories from './src/Pages/Categories/Categories';
+import SubCategories from './src/Pages/Categories/SubCategories';
 
 const Stack = createNativeStackNavigator();
 
@@ -59,21 +61,16 @@ function App(): JSX.Element {
  <StatusBar barStyle="dark-content" hidden={true} backgroundColor="#00BCD4" translucent={true} />
 
 <Stack.Navigator>
-  <Stack.Screen name="HomeScreen" component={BottomNavigator}
+  <Stack.Screen name="Home" component={BottomNavigator}
     options={options}
   />
-  <Stack.Screen name="SearchManuScreen" component={BottomNavigator}
+  <Stack.Screen name="Categories" component={Categories}
     options={options}
   />
-  <Stack.Screen name="BestSellerScreen" component={BottomNavigator}
+  <Stack.Screen name="SubCategories" component={SubCategories}
     options={options}
   />
-  <Stack.Screen name="ProfileScreen" component={BottomNavigator}
-    options={options}
-  />
-  <Stack.Screen name="CardScreen" component={BottomNavigator}
-    options={options}
-  />
+
 
 
 </Stack.Navigator>

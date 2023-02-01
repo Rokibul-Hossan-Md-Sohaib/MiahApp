@@ -15,6 +15,7 @@ import BestSeller from '../Pages/BestSeller';
 import Profile from '../Pages/Profile';
 import Crad from '../Pages/Crad';
 import Main from '../Pages/Home/Main';
+import Categories from '../Pages/Categories/Categories';
 const Tab = createBottomTabNavigator();
 const BottomNavigator = () => {
   return (
@@ -122,6 +123,29 @@ const BottomNavigator = () => {
           ),
         }}
       />
+{/* <Tab.Screen name="Categories" component={Categories} options={{
+    tabBarIc: () => null,
+    tabBarVisible: false,
+  }} /> */}
+{/* <Tab.Screen
+        name="Categories"
+        component={Categories}
+        options={{
+          header: () => null,
+          tabBarIcon: () => (
+            null
+            // <Image source={profile} style={styles.image} />
+            // <FontAwesome5
+            //     name='home'
+
+            //     size={28}
+            // />
+
+          ),
+          tabBarVisible: false,
+        }}
+       
+      /> */}
     </Tab.Navigator>
   );
 };
