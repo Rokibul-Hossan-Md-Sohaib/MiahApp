@@ -36,6 +36,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BottomNavigator from './src/navigator/BottomNavigator';
 import Categories from './src/Pages/Categories/Categories';
 import SubCategories from './src/Pages/Categories/SubCategories';
+import {Provider} from 'react-redux';
+import store from './redux/store';
+import SubSubCat from './src/Pages/Categories/SubSubCat';
 
 const Stack = createNativeStackNavigator();
 
@@ -45,6 +48,7 @@ function App(): JSX.Element {
     header: () => null
   }
   return (
+    <Provider store={store}>
     <NavigationContainer>
    {/* <Tab.Navigator
    > */}
@@ -70,6 +74,9 @@ function App(): JSX.Element {
   <Stack.Screen name="SubCategories" component={SubCategories}
     options={options}
   />
+  <Stack.Screen name="SubSubCat" component={SubSubCat}
+    options={options}
+  />
 
 
 
@@ -83,6 +90,7 @@ function App(): JSX.Element {
     
    
     </NavigationContainer>
+     </Provider>
   );
 }
 

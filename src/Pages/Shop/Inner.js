@@ -1,38 +1,24 @@
-import {StyleSheet, View, Image, ScrollView , Pressable} from 'react-native';
-import React from 'react';
-import {Avatar, Card, Text, Searchbar} from 'react-native-paper';
-import {background} from 'native-base/lib/typescript/theme/styled-system';
-import COLORS from '../../colors/colors';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import { StyleSheet, Text, View, ScrollView, Pressable, Image } from 'react-native'
+import React from 'react'
 import right_arrow from '../../asset/right_arrow_icon.png'
-const Categories = ({route, navigation}) => {
-  const [searchQuery, setSearchQuery] = React.useState('');
+import COLORS from '../../colors/colors'
+import { Link } from 'solito/link'
 
-  const onChangeSearch = query => setSearchQuery(query);
-  const {category, name} = route.params;
-  console.log('name', name);
+const Inner = ({menu}) => {
+  console.log("menu", menu)
   return (
     <View>
-      <View style={{justifyContent: 'center', alignItems: 'center'}}>
-        <Text style={{fontWeight: 'bold', fontSize: 18, marginBottom: 8.0}}>
-          {name}
-        </Text>
-      </View>
-      <Searchbar
-        placeholder="Search"
-        onChangeText={onChangeSearch}
-        value={searchQuery}
-        style={{marginBottom: 10 , backgroundColor: COLORS.white, color: COLORS.white}}
-      />
-      {category
-        ? category.map((cat, index) => {
+        {menu
+        ? menu.map((cat, index) => {
             return (
               <ScrollView>
                 <Pressable
-                  onPress={() => navigation.navigate('SubCategories', {subcategory: cat.subcategory , nameSub: cat.slug})}
+                  // onPress={() => navigation.navigate('SubCategories', {subcategory: cat.subcategory , nameSub: cat.slug})}
                 >
                 <View key={index.id} style={styles.category}>
+
                   {cat.mobile_image ? (
+                    
                     <Image
                       alt="name"
                       justifyContent="space-between"
@@ -56,11 +42,11 @@ const Categories = ({route, navigation}) => {
                     />
                   )}
                   <View style={styles.textOne}>
-                    <Text style={{fontSize: 13}}>{cat.category}</Text>
-
-                  </View>
-                  <Image
-                   source={right_arrow}
+                    <Text style={{fontSize: 13}}>{cat.slug}</Text>
+                
+                  </View> 
+                   <Image
+                   source={right_arrow} 
                   style={{width: 20, height: 20, justifyContent:'center',
                 alignItems: 'center' , top: 20
                 }}
@@ -70,13 +56,14 @@ const Categories = ({route, navigation}) => {
               </ScrollView>
             );
           })
-        : null
+        : null    
         }
+  
     </View>
-  );
-};
+  )
+}
 
-export default Categories;
+export default Inner
 
 const styles = StyleSheet.create({
   category: {

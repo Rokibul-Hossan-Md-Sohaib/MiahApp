@@ -16,6 +16,7 @@ import Profile from '../Pages/Profile';
 import Crad from '../Pages/Crad';
 import Main from '../Pages/Home/Main';
 import Categories from '../Pages/Categories/Categories';
+import Shop from '../Pages/Shop/Shop';
 const Tab = createBottomTabNavigator();
 const BottomNavigator = () => {
   return (
@@ -30,7 +31,7 @@ const BottomNavigator = () => {
           elevation: 0,
         },
       }}>
-             <Tab.Screen
+             {/* <Tab.Screen
         name="Main"
         component={Main}
         options={{
@@ -44,8 +45,8 @@ const BottomNavigator = () => {
             // />
           ),
         }}
-      />
-      {/* <Tab.Screen
+      /> */}
+      <Tab.Screen
         name="Home"
         component={Home}
         options={{
@@ -59,7 +60,7 @@ const BottomNavigator = () => {
             // />
           ),
         }}
-      /> */}
+      />
 
       <Tab.Screen
         name="Product"
@@ -123,7 +124,38 @@ const BottomNavigator = () => {
           ),
         }}
       />
-{/* <Tab.Screen name="Categories" component={Categories} options={{
+      <Tab.Screen
+        name="Shop"
+        component={Shop}
+        options={{
+          header: () => null,
+          tabBarIcon: () => (
+            <Image source={addtocard} style={styles.image} />
+            // <FontAwesome5
+            //     name='home'
+
+            //     size={28}
+            // />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Main"
+        component={Main}
+        options={{
+          header: () => null,
+          tabBarIcon: () => (
+            <Image source={addtocard} style={styles.image} />
+            // <FontAwesome5
+            //     name='home'
+
+            //     size={28}
+            // />
+          ),
+        }}
+      />
+{/*   
+<Tab.Screen name="Categories" component={Categories} options={{
     tabBarIc: () => null,
     tabBarVisible: false,
   }} /> */}

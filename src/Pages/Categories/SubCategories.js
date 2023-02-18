@@ -5,7 +5,7 @@ import COLORS from '../../colors/colors';
 
 import right_arrow from '../../asset/right_arrow_icon.png'
 
-const SubCategories = ({route}) => {
+const SubCategories = ({route, navigation}) => {
   const [searchQuery, setSearchQuery] = React.useState('');
   const onChangeSearch = query => setSearchQuery(query);
 
@@ -36,9 +36,7 @@ const SubCategories = ({route}) => {
         subcategory ? subcategory.map((subCat , subIndex) =>{
           return (
             <ScrollView>
-            <Pressable
-              // onPress={() => navigation.navigate('SubCategories', {subcategory: cat.subcategory , nameSub: cat.slug})}
-            >
+          
             <View>
              <View
               style={{
@@ -48,7 +46,12 @@ const SubCategories = ({route}) => {
 }}
 />
             <View style={{flex: 1, flexDirection: 'row'}}>
-            <Text style={{fontSize: 15, marginTop: 10, marginLeft: 10}}>{subCat.slug}</Text>
+            <Pressable
+              onPress={() => navigation.navigate('SubSubCat', {name: subCat.slug})}
+            >
+               <Text style={{fontSize: 15, marginTop: 10, marginLeft: 10}}>{subCat.slug}</Text>
+              </Pressable>
+           
             {/* <Text style={{fontSize: 15, marginTop: 10, marginLeft: 10}}>{subCat.slug}</Text> */}
             {/* <Image
                    source={right_arrow} 
@@ -63,7 +66,7 @@ const SubCategories = ({route}) => {
 }}
 />
               </View>
-              </Pressable>
+           
               </ScrollView>
           )
         

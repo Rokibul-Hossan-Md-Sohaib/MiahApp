@@ -29,46 +29,46 @@ const menuReducer = (state = initialState, action) => {
         ...state,
         menu: action.payload,
       };
-    case SET_COUNT:
-      return {
-        ...state,
-        count: action.payload + parseInt(state.count),
-      };
-    case DRAWER:
-      return {
-        ...state,
-        drawer: action.payload,
-      };
-    case SUB_DRAWER:
-      return {
-        ...state,
-        subDrawer: action.payload,
-      };
-    case CAT_DRAWER:
-      return {
-        ...state,
-        catDrawer: action.payload,
-      };
-    case LOAD_CATEGORY:
-      return {
-        ...state,
-        category: action.payload,
-      };
-    case LOAD_SUB_CATEGORY:
-      return {
-        ...state,
-        subCategory: action.payload,
-      };
-    case SET_SITE_OPTIONS:
-      return {
-        ...state,
-        siteOptions: action.payload,
-      };
-    case SET_SEARCH_PANEL:
-      return {
-        ...state,
-        searchPanel: action.payload,
-      };
+    // case SET_COUNT:
+    //   return {
+    //     ...state,
+    //     count: action.payload + parseInt(state.count),
+    //   };
+    // case DRAWER:
+    //   return {
+    //     ...state,
+    //     drawer: action.payload,
+    //   };
+    // case SUB_DRAWER:
+    //   return {
+    //     ...state,
+    //     subDrawer: action.payload,
+    //   };
+    // case CAT_DRAWER:
+    //   return {
+    //     ...state,
+    //     catDrawer: action.payload,
+    //   };
+    // case LOAD_CATEGORY:
+    //   return {
+    //     ...state,
+    //     category: action.payload,
+    //   };
+    // case LOAD_SUB_CATEGORY:
+    //   return {
+    //     ...state,
+    //     subCategory: action.payload,
+    //   };
+    // case SET_SITE_OPTIONS:
+    //   return {
+    //     ...state,
+    //     siteOptions: action.payload,
+    //   };
+    // case SET_SEARCH_PANEL:
+    //   return {
+    //     ...state,
+    //     searchPanel: action.payload,
+    //   };
     default:
       return state
   }
