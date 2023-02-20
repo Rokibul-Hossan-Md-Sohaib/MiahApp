@@ -23,6 +23,7 @@ import {
 } from 'native-base';
 import COLORS from '../../colors/colors';
 import ImageSub from './ImageSub';
+import Swiper from 'react-native-swiper';
 
 
 
@@ -145,38 +146,41 @@ onPress ={() => navigation.navigate("New") }
       )
       
     } */}
+     <Swiper style={{height: Dimensions.get('window').height/4}}>
   {
-     item.variant && item.variant.map((img) =>
+     item.variant[0] ? item.variant[0].map((img) =>
      
    {   
         return(
-
+         
       <View>
      
             <Image
           style={styles.img}
           source={{
             uri: `https://images.miah.shop/product/m_thumb/${
-              img[1] ? img[1].img : ""
-              // x.img
+              // img[1] ? img[1].img : ""
+              img.img
             }`,
             // uri: `https://www.miah.shop/_next/image?url=https%3A%2F%2Fimages.miah.shop%2Fproduct%2Fm_thumb%2FAmanat_Shah_Lungi_Mullayon_1028_8771_1.jpg&w=1920&q=75`,
           }}
         />
       </View>
+      
         )}
   
       
       )
-      
+      : []
     }
+        </Swiper>
 {/* <ImageSub item={item} /> */}
 
                     
                       <View style={styles.text}>
                         <Text style={{marginTop:5 }}>{item.name}</Text>
                         <Text>{item.name_bangla}</Text>
-                        <Text>{item.id}</Text>
+                        {/* <Text>{item.id}</Text> */}
                         <Text style={{ fontWeight: 'bold',}}>TK {item.sales_cost}</Text>
                         {/* <Button>Ok</Button> */}
                       </View>
@@ -210,7 +214,12 @@ onPress ={() => navigation.navigate("New") }
 export default SubSubCat
 
 const styles = StyleSheet.create({
+  wrapper:{
+    flex: 1
+  },
   img: {
+    // height: 100,
+    // width: 100,
     width: Dimensions.get('window').width/2,
     height: Dimensions.get('window').height/4,
     backgroundColor: COLORS.white,
@@ -232,8 +241,8 @@ const styles = StyleSheet.create({
     // backgroundColor: 'black',
   },
   text: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
     backgroundColor: COLORS.white,
 
   },
