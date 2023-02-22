@@ -72,7 +72,7 @@ const SearceManu = ({navigation}) => {
   //     .finally(() => setLoading(true));
   // }, []);
   return (
-    <View>
+    <View >
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
         <Text style={{fontWeight: 'bold', fontSize: 18, marginBottom: 8.0}}>
           CATEGORIES
@@ -113,9 +113,9 @@ onPress ={() => navigation.navigate("New") }
                     }
                     bg={COLORS.white}
                     rounded="md"
-                    pt={0.3}
-                    my={3}
-                    pd={2}
+                    // pt={0.3}
+                    // my={3}
+                    // pd={2}
                     overflow="hidden">
                     <Card>
                       {/* <Card.Title title="Card Title" subtitle="Card Subtitle"  /> */}
@@ -124,14 +124,16 @@ onPress ={() => navigation.navigate("New") }
       <Text variant="bodyMedium">Card content</Text>
     </Card.Content> */}
                       <Card.Cover
-                        style={{padding: 15}}
+                        style={{padding: 15,   borderRadius: 10,
+                          borderWidth: 2,
+                          borderColor: '#ffff' }}
                         source={{
                           uri: `https://images.miah.shop/banner/${item.big_image}`,
                           // uri: `https://www.miah.shop/_next/image?url=https%3A%2F%2Fimages.miah.shop%2Fproduct%2Fm_thumb%2FAmanat_Shah_Lungi_Mullayon_1028_8771_1.jpg&w=1920&q=75`,
                         }}
                       />
                       <View style={styles.text}>
-                        <Text>{item.root_category}</Text>
+                        <Text style={{marginTop: 15, marginBottom: 10}}>{item.root_category}</Text>
                         {/* <Button>Ok</Button> */}
                       </View>
                     </Card>
@@ -165,7 +167,7 @@ const styles = StyleSheet.create({
   img: {
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
-    backgroundColor: 'black',
+    backgroundColor: 'white',
   },
   container: {
     flex: 1,
@@ -181,7 +183,13 @@ const styles = StyleSheet.create({
     // backgroundColor: 'black',
   },
   text: {
+    backgroundColor: COLORS.white,
     alignItems: 'center',
     justifyContent: 'center',
+    borderRadius: 10,
+    borderWidth: .3,
+    borderColor: '#ffff',
+    // marginBottom: 3
+    
   },
 });

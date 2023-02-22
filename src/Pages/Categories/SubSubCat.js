@@ -5,6 +5,7 @@ import {
   SafeAreaView,
   Image,
   ScrollView,
+  ActivityIndicator
 } from 'react-native';
 import React, { useState, useEffect } from 'react'
 import {Dimensions} from 'react-native';
@@ -24,12 +25,15 @@ import {
 import COLORS from '../../colors/colors';
 import ImageSub from './ImageSub';
 import Swiper from 'react-native-swiper';
-
+import LinearGradient from 'react-native-linear-gradient';
+import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder';
+const ShimmerPlaceHolder = createShimmerPlaceholder(LinearGradient)
 
 
 const SubSubCat = ({route, navigation}) => {
   const [searchQuery, setSearchQuery] = React.useState('');
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [priviousPage, setPrivousPage] = useState(currentPage-1);
   const onChangeSearch = query => setSearchQuery(query);
 
 
@@ -45,7 +49,7 @@ const BASE_URL = `https://api.miah.shop/api/productByCatSubId?
 departmentId=
 &categoryId=
 &subCategoryId=${name}
-&offset=0
+&offset=${currentPage}
 &promoProduct=
 &attribute=
 &tags=
@@ -58,6 +62,15 @@ departmentId=
 &pattern=
 &sorting=DESC`
 
+
+const renderLoader = () => {
+  return (
+    isLoading ?
+      <View style={styles.loaderStyle}>
+        <ActivityIndicator size="large" color="#aaa" />
+      </View> : null
+  );
+};
 const getData = async (url) => {
   
   try {
@@ -72,15 +85,25 @@ const getData = async (url) => {
     console.log(err);
   }
 };
+const loadMoreItem = () => {
+  setCurrentPage(currentPage + 1); 
+};
 useEffect(() => {
   getData(BASE_URL);
-}, []);
+}, [currentPage]);
   return (
-       <View style={{backgroundColor: 'white'}}>
+       <View style={{backgroundColor: 'white', marginBottom: 5}}>
+        {/* <ShimmerPlaceHolder 
+          />
+            <ShimmerPlaceHolder
+            
+            > */}
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
+ 
         <Text style={{fontWeight: 'bold', fontSize: 18, marginBottom: 8.0}}>
           {name}
         </Text>
+   
       </View>
       {/* <Searchbar
         placeholder="Search"
@@ -101,6 +124,10 @@ onPress ={() => navigation.navigate("New") }
       <FlatList
         numColumns={2}
         data={user}
+      
+        onEndReachedThreshold={0}
+        ListFooterComponent={renderLoader}
+        onEndReached={loadMoreItem}
         renderItem={({item}) => {
           console.log('items', item);
           return (
@@ -148,7 +175,7 @@ onPress ={() => navigation.navigate("New") }
     } */}
      <Swiper style={{height: Dimensions.get('window').height/4}}>
   {
-     item.variant[0] ? item.variant[0].map((img) =>
+     item.variant ? item.variant[0].map((img) =>
      
    {   
         return(
@@ -180,7 +207,7 @@ onPress ={() => navigation.navigate("New") }
                       <View style={styles.text}>
                         <Text style={{marginTop:5 }}>{item.name}</Text>
                         <Text>{item.name_bangla}</Text>
-                        {/* <Text>{item.id}</Text> */}
+                        <Text>{item.id}</Text>
                         <Text style={{ fontWeight: 'bold',}}>TK {item.sales_cost}</Text>
                         {/* <Button>Ok</Button> */}
                       </View>
@@ -192,8 +219,7 @@ onPress ={() => navigation.navigate("New") }
           );
         }}
       />
-
-      <Card>
+            <Card>
         {/* <Card.Title title="Card Title" subtitle="Card Subtitle"  /> */}
         {/* <Card.Content>
       <Text variant="titleLarge">Card title</Text>
@@ -206,6 +232,8 @@ onPress ={() => navigation.navigate("New") }
           }}
         />
       </Card>
+
+      {/* </ShimmerPlaceHolder> */}
     </View>
 
   )
@@ -244,6 +272,14 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
     // justifyContent: 'center',
     backgroundColor: COLORS.white,
+   
+    borderRadius: 10,
+    borderWidth: .6,
+    borderColor: '#ffff',
 
+  },
+  loaderStyle: {
+    marginVertical: 16,
+    alignItems: "center",
   },
 });

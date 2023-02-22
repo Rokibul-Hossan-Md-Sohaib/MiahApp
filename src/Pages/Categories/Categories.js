@@ -5,9 +5,14 @@ import {background} from 'native-base/lib/typescript/theme/styled-system';
 import COLORS from '../../colors/colors';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import right_arrow from '../../asset/right_arrow_icon.png'
+
+import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder'
+import LinearGradient from 'react-native-linear-gradient';
+
+const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient)
 const Categories = ({route, navigation}) => {
   const [searchQuery, setSearchQuery] = React.useState('');
-
+// const [loading , setloading] =useState(true)
   const onChangeSearch = query => setSearchQuery(query);
   const {category, name} = route.params;
   console.log('name', name);
@@ -24,6 +29,7 @@ const Categories = ({route, navigation}) => {
         value={searchQuery}
         style={{marginBottom: 10 , backgroundColor: COLORS.white, color: COLORS.white}}
       />
+      
       {category
         ? category.map((cat, index) => {
             return (
