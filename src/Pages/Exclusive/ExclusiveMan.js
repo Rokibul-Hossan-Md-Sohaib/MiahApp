@@ -17,20 +17,20 @@ import {
   Pressable,
 } from 'native-base';
 import COLORS from '../../colors/colors';
-import ImageSub from './ImageSub';
+// import ImageSub from './ImageSub';
 import Swiper from 'react-native-swiper';
 import LinearGradient from 'react-native-linear-gradient';
 import {createShimmerPlaceholder} from 'react-native-shimmer-placeholder';
 const ShimmerPlaceHolder = createShimmerPlaceholder(LinearGradient);
 
-const SubSubCat = ({route, navigation}) => {
+const ExclusiveMan = ({route, navigation}) => {
   const [searchQuery, setSearchQuery] = React.useState('');
   const [currentPage, setCurrentPage] = useState(0);
   const [priviousPage, setPrivousPage] = useState(currentPage - 1);
   const onChangeSearch = query => setSearchQuery(query);
 
-  const {name} = route.params;
-  console.log('NNNNN', name);
+  const {name , main, others} = route.params;
+  console.log('NNNNN', others , main, name);
   const [isLoading, setLoading] = useState(true);
   const [pageCurrent, setpageCurrent] = useState(1);
   const [user, setUser] = useState([]);
@@ -62,7 +62,7 @@ departmentId=
   const getData = async () => {
     try {
       const response = await fetch(
-        `https://api.miah.shop/api/productList?subCategoryId=${name}&sorting=ASC&device=mobile&page=${currentPage}`,
+        `https://api.miah.shop/api/productList?${main}=1&sorting=${others}&device=mobile&page=${currentPage}`,
       );
       const users = await response.json();
       console.log('$$$$$$$$$$$', users.data.product.data);
@@ -149,7 +149,7 @@ setCurrentPage(currentPage + 1)
         data={user}
         onEndReachedThreshold={0}
         ListFooterComponent={renderLoader}
-     
+        keyExtractor={item => item.id}
         onEndReached={loadMoreItem}
         renderItem={renderItems}
       />
@@ -158,7 +158,7 @@ setCurrentPage(currentPage + 1)
   );
 };
 
-export default SubSubCat;
+export default ExclusiveMan;
 
 const styles = StyleSheet.create({
   wrapper: {

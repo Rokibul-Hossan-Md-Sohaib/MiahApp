@@ -4,7 +4,7 @@ import axios from "axios";
 
 const Card = () => {
   const [users, setUsers] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
   const getUsers = () => {
@@ -39,7 +39,7 @@ const Card = () => {
   };
 
   const loadMoreItem = () => {
-    setCurrentPage(...currentPage,currentPage + 1); 
+    setCurrentPage(currentPage + 1); 
   };
 
   useEffect(() => {

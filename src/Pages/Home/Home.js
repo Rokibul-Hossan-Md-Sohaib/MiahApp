@@ -37,7 +37,7 @@ const Home = ({navigation}) => {
         <View>
           <Video
             source={{
-              uri: 'https://d25xyv9ldicae3.cloudfront.net/media/miah-banner-mobile.mp4',
+              uri: 'https://d25xyv9ldicae3.cloudfront.net/media/miah_banner_mobile_19032023.mp4',
             }}
             rate={1.0}
             volume={0.0}
@@ -51,7 +51,13 @@ const Home = ({navigation}) => {
             {/* <Text style={styles.text}>COMFORT REDEFINE</Text> */}
 
             <View>
-              <Pressable style={styles.button}>
+            <Text style={styles.text}>STYLE YO’’LL LOVE</Text>
+              <Pressable style={styles.button}
+            
+              onPress={() =>
+                navigation.navigate('ExclusiveMan', {name: "Fastive Collection" ,  main: "festiveProduct" ,others : "ASC"})
+              }
+              >
                 <Text
                   style={{
                     textAlign: 'center',
@@ -62,13 +68,15 @@ const Home = ({navigation}) => {
                     color: 'black',
                   }}>
                   {' '}
-                  Exclusive for Men{' '}
+                  Fastive Collection {' '}
                 </Text>
               </Pressable>
             </View>
 
-            <View style={{marginTop: 10}}>
-              <Pressable style={styles.button}>
+            {/* <View style={{marginTop: 10}}>
+              <Pressable style={styles.button}
+              
+              >
                 <Text
                   style={{
                     textAlign: 'center',
@@ -82,7 +90,7 @@ const Home = ({navigation}) => {
                   Exclusive for Women{' '}
                 </Text>
               </Pressable>
-            </View>
+            </View> */}
           </View>
         </View>
         {/* <View>

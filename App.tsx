@@ -39,6 +39,9 @@ import SubCategories from './src/Pages/Categories/SubCategories';
 import {Provider} from 'react-redux';
 import store from './redux/store';
 import SubSubCat from './src/Pages/Categories/SubSubCat';
+import catSub from './src/Pages/Categories/catSub';
+import ExclusiveMan from './src/Pages/Exclusive/ExclusiveMan';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -75,6 +78,12 @@ function App(): JSX.Element {
     options={options}
   />
   <Stack.Screen name="SubSubCat" component={SubSubCat}
+    options={options}
+  />
+  <Stack.Screen name="catSub" component={catSub}
+    options={options}
+  />
+  <Stack.Screen name="ExclusiveMan" component={ExclusiveMan}
     options={options}
   />
 

@@ -17,7 +17,34 @@ import Crad from '../Pages/Crad';
 import Main from '../Pages/Home/Main';
 import Categories from '../Pages/Categories/Categories';
 import Shop from '../Pages/Shop/Shop';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import SubCategories from '../Pages/Categories/SubCategories';
+import SubSubCat from '../Pages/Categories/SubSubCat';
+import Pre from '../../Pre';
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
+function HomeStackScreen() {
+  const options = {
+    header: () => null,
+  };
+  return (
+    <Stack.Navigator>
+      <Stack.Screen options={options} name="Product" component={Product} />
+      <Stack.Screen
+        name="Categories"
+        component={Categories}
+        options={options}
+      />
+      <Stack.Screen
+        name="SubCategories"
+        component={SubCategories}
+        options={options}
+      />
+      <Stack.Screen name="SubSubCat" component={SubSubCat} options={options} />
+    </Stack.Navigator>
+  );
+}
 const BottomNavigator = () => {
   return (
     <Tab.Navigator
@@ -31,7 +58,7 @@ const BottomNavigator = () => {
           elevation: 0,
         },
       }}>
-             {/* <Tab.Screen
+      {/* <Tab.Screen
         name="Main"
         component={Main}
         options={{
@@ -64,7 +91,7 @@ const BottomNavigator = () => {
 
       <Tab.Screen
         name="Product"
-        component={Product}
+        component={HomeStackScreen}
         options={{
           header: () => null,
           tabBarIcon: () => (
@@ -124,7 +151,22 @@ const BottomNavigator = () => {
           ),
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
+        name="Pre"
+        component={Pre}
+        options={{
+          header: () => null,
+          tabBarIcon: () => (
+            <Image source={addtocard} style={styles.image} />
+            // <FontAwesome5
+            //     name='home'
+
+            //     size={28}
+            // />
+          ),
+        }}
+      /> */}
+      {/* <Tab.Screen
         name="Shop"
         component={Shop}
         options={{
@@ -138,8 +180,8 @@ const BottomNavigator = () => {
             // />
           ),
         }}
-      />
-      <Tab.Screen
+      /> */}
+      {/* <Tab.Screen
         name="Main"
         component={Main}
         options={{
@@ -153,13 +195,13 @@ const BottomNavigator = () => {
             // />
           ),
         }}
-      />
-{/*   
+      /> */}
+      {/*   
 <Tab.Screen name="Categories" component={Categories} options={{
     tabBarIc: () => null,
     tabBarVisible: false,
   }} /> */}
-{/* <Tab.Screen
+      {/* <Tab.Screen
         name="Categories"
         component={Categories}
         options={{

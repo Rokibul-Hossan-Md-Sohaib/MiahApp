@@ -18,7 +18,11 @@ const ShopForMen = () => {
 />
 <View style={styles.content}>
             <Text style={styles.text}>COMFORT REDEFINE</Text>
-            <Pressable style={styles.button}>
+            <Pressable style={styles.button}
+            onPress={() =>
+              navigation.navigate('ExclusiveMan', {name: "Fastive Collection" ,  main: "festiveProduct" ,others : "ASC"})
+            }
+            >
                 <Text
                   style={{
                     textAlign: 'center',
